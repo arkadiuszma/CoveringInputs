@@ -3,6 +3,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class FileHandler {
+
     private static Properties loadFile(String path) throws IOException {
         InputStream criteriaVariables = null;
         Properties properties = null;
@@ -19,10 +20,14 @@ public class FileHandler {
         return properties;
     }
 
-    protected static char getChar() throws IOException {
-        String path = "criteriaVariables.properties";
+    protected static char getChar(String path) throws IOException {
         Properties variables = FileHandler.loadFile(path);
         char[] chars = variables.getProperty("coveringSign").toCharArray();
         return chars[0];
+    }
+
+    protected static String[] getSensitiveKeys(String path) throws IOException {
+        Properties variables = FileHandler.loadFile(path);
+        return variables.getProperty("sensitiveKeys").split(",");
     }
 }

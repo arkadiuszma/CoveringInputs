@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -6,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class UserPropertiesMap {
-    private final static String[] sensitiveKeys = {"Password", "Card number"};
+    private static final String filePath = "criteriaVariables.properties";
 
     protected static Map<String, String> createUserDataMap(User user) {
         Map<String, String> userMap = new HashMap<>();
@@ -18,7 +19,8 @@ public class UserPropertiesMap {
         return userMap;
     }
 
-    protected static void printUserData(Map<String, String> userMap, char coveringSign) {
+    protected static void printUserData(Map<String, String> userMap, char coveringSign) throws IOException {
+        String[] sensitiveKeys = FileHandler.getSensitiveKeys(filePath);
         Arrays.stream(sensitiveKeys).forEach(param -> userMap.computeIfPresent(param, (k, v) -> coveringInput(v, coveringSign)));
         System.out.println(userMap);
     }

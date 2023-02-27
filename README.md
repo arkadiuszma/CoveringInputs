@@ -5,4 +5,4 @@
 - Password: may contains of upper and lower case includes polish signs, numbers and special characters.
 - E-mail: must be in <text>@domain type. Text may includes only lower case letters and numbers for example: jk123@example.com.
 - Card number: must contains of 16 - numbers.
-2. To change character which is covering sensitive data you have to change coveringSign parameter in criteriaVariables properties.
+2. To change character which is covering sensitive data or sensitive keys you have to change coveringSign parameter in criteriaVariables properties.

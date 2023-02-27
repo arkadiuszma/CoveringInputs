@@ -7,9 +7,10 @@ public class Main {
     private static final String password = UserInputHandler.getPassword();
     private static final String eMail = UserInputHandler.getEmail();
     private static final long cardNumber = UserInputHandler.getCardNumber();
+    private static final String filePath = "criteriaVariables.properties";
 
     public static void main(String[] args) throws IOException {
-        char coveringSign = FileHandler.getChar();
+        char coveringSign = FileHandler.getChar(filePath);
         User user = new User(name, login, password, eMail, cardNumber);
         Map<String, String> userMap = UserPropertiesMap.createUserDataMap(user);
         UserPropertiesMap.printUserData(userMap, coveringSign);
